@@ -38,6 +38,12 @@ resource "aws_instance" "rabbitmq" {
   iam_instance_profile = aws_iam_instance_profile.instance_profile.name
   subnet_id = var.subnet_id
 
+  ##after provision the server, we can this userdata.sh script###
+  user_data     = templatefile("${path.module}/userdata.sh", {
+    env          = var.env
+    #hostnames   = {"dev":"devhost","test":"testhost","prod":"prodhost"}
+  })
+
   tags              = merge ({ Name = "${var.component}-${var.env}" }, var.tags )
 
 }
