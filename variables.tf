@@ -4,4 +4,5 @@ variable "env" {}
 variable "sg_subnet_cidr" {}
 variable "vpc_id" {}
 variable "tags" {}
+variable "subnet_id" {}
 
