@@ -40,9 +40,11 @@ resource "aws_instance" "rabbitmq" {
   ##after provision the server, we can this userdata.sh script###
   user_data     = templatefile("${path.module}/userdata.sh", {
     env          = var.env
+    component    = var.component
+
     #hostnames   = {"dev":"devhost","test":"testhost","prod":"prodhost"}
   })
-  component     = var.component
+  #component     = var.component
   tags              = merge ({ Name = "${var.component}-${var.env}" }, var.tags )
 }
 
