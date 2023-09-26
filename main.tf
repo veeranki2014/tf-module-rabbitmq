@@ -46,6 +46,11 @@ resource "aws_instance" "rabbitmq" {
   })
   #component     = var.component
   tags              = merge ({ Name = "${var.component}-${var.env}" }, var.tags )
+
+  root_block_device {
+    encrypted = true
+    kms_key_id = var.kms_key_id
+  }
 }
 
 # Route53 (DNS)

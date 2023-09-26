@@ -7,4 +7,5 @@ variable "tags" {}
 variable "subnet_id" {}
 variable "allow_ssh_cidr" {}
 variable "zone_id" {}
+variable "kms_key_id" {}
 
