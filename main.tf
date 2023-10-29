@@ -37,7 +37,7 @@ resource "aws_instance" "rabbitmq" {
   vpc_security_group_ids = [ aws_security_group.main.id ]
   iam_instance_profile = aws_iam_instance_profile.instance_profile.name
   subnet_id = var.subnet_id
-  ##after provision the server, we can this userdata.sh script###
+  ##after provision the server, we can use this userdata.sh script###
   user_data     = templatefile("${path.module}/userdata.sh", {
     env          = var.env
     component    = var.component
